@@ -80,7 +80,8 @@ router.post("/login", async (req, res) => {
 });
 //verefy request
 
-router.post("/auth", verifyToken, verefyAdminRole, async (req, res) => {
+router.post("/auth", verifyToken, /*verefyAdminRole,*/ async (req, res) => {
+  // When uncoment the verefyAdminRole Then only access the dashbord portel who have admin(rol=1)
   res.json({
     statusCode: 200,
     message: req.body.purpose,

@@ -8,8 +8,8 @@ var saltRound = 10;
 var hashPassword = async (pwd) => {
   let salt = await bcrypt.genSalt(saltRound);
   let hash = await bcrypt.hash(pwd, salt);
-  console.log(salt);
-  console.log(hash);
+  //console.log(salt);
+  //console.log(hash);
   return hash;
 };
 
@@ -36,6 +36,7 @@ let createToken = async (email, firstname, role) => {
 
 //verify the token
 let verifyToken = async (req, res, next) => {
+  //console.log(req);
   let decodeData = JWTD(req.headers.token);
   if (new Date() / 1000 < decodeData.exp) {
     next();
